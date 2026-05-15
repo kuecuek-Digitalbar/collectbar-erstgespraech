@@ -221,19 +221,21 @@ export default function CollectbarTool() {
     });
   };
 
+
 const exportPDF = async () => {
   const fileName =
-    answers[0] &&
-    answers[0].trim() !== ""
+    answers[0] && answers[0].trim() !== ""
       ? answers[0].trim()
       : "Erstgespräch";
 
-  const element =
-    document.getElementById(
-      "pdf-export"
-    );
+  const element = document.getElementById("pdf-export");
 
+  // WICHTIG
   element.style.display = "block";
+
+  await new Promise((resolve) =>
+    setTimeout(resolve, 300)
+  );
 
   const options = {
     margin: 0.5,
@@ -244,10 +246,10 @@ const exportPDF = async () => {
       type: "jpeg",
       quality: 1,
     },
-
     html2canvas: {
       scale: 2,
       useCORS: true,
+      scrollY: 0,
     },
 
     jsPDF: {
@@ -257,7 +259,8 @@ const exportPDF = async () => {
     },
 
     pagebreak: {
-      mode: ["avoid-all", "css", "legacy"],
+      mode: ["css", "legacy"],
+      after: ".page-break",
     },
   };
 
@@ -270,41 +273,42 @@ const exportPDF = async () => {
 };
 
 
-const allQuestions = questions.map(
-  (q, index) => (
-    <div
-      key={index}
+{questions.map((q, index) => (
+  <div
+    key={index}
+    className="page-break"
+    style={{
+      marginBottom: "40px",
+      paddingBottom: "20px",
+      borderBottom: "1px solid #dbe4ee",
+    }}
+  >
+    <h2
       style={{
-        marginBottom: "30px",
-        pageBreakInside: "avoid",
+        fontSize: "24px",
+        marginBottom: "12px",
+        color: "#031b34",
       }}
     >
-      <h2
-        style={{
-          fontSize: "24px",
-          marginBottom: "10px",
-          color: "#031b34",
-        }}
-      >
-        {q.title}
-      </h2>
+      {q.title}
+    </h2>
 
-      <div
-        style={{
-          border: "1px solid #dbe4ee",
-          borderRadius: "12px",
-          padding: "16px",
-          background: "#f8fafc",
-          minHeight: "80px",
-          whiteSpace: "pre-wrap",
-          color: "#111827",
-        }}
-      >
-        {answers[index] || "-"}
-      </div>
+    <div
+      style={{
+        border: "1px solid #dbe4ee",
+        borderRadius: "12px",
+        padding: "16px",
+        background: "#f8fafc",
+        minHeight: "80px",
+        whiteSpace: "pre-wrap",
+        color: "#111827",
+      }}
+    >
+      {answers[index] || "-"}
     </div>
-  )
-);
+  </div>
+))}
+
   return (
     <div
       style={{
@@ -675,12 +679,10 @@ const allQuestions = questions.map(
       <div
   id="pdf-export"
   style={{
-    visibility: "hidden",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "900px",
-    background: "white",
+     display: "none",
+  width: "900px",
+  background: "white",
+  padding: "40px",
   }}
 >
   <h1
