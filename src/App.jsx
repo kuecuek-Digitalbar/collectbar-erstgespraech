@@ -273,41 +273,6 @@ const exportPDF = async () => {
 };
 
 
-{questions.map((q, index) => (
-  <div
-    key={index}
-    className="page-break"
-    style={{
-      marginBottom: "40px",
-      paddingBottom: "20px",
-      borderBottom: "1px solid #dbe4ee",
-    }}
-  >
-    <h2
-      style={{
-        fontSize: "24px",
-        marginBottom: "12px",
-        color: "#031b34",
-      }}
-    >
-      {q.title}
-    </h2>
-
-    <div
-      style={{
-        border: "1px solid #dbe4ee",
-        borderRadius: "12px",
-        padding: "16px",
-        background: "#f8fafc",
-        minHeight: "80px",
-        whiteSpace: "pre-wrap",
-        color: "#111827",
-      }}
-    >
-      {answers[index] || "-"}
-    </div>
-  </div>
-))}
 
   return (
     <div
@@ -678,24 +643,61 @@ const exportPDF = async () => {
       </div>
       <div
   id="pdf-export"
-  style={{
-     display: "none",
+style={{
+  position: "absolute",
+  top: "-99999px",
+  left: "-99999px",
   width: "900px",
   background: "white",
   padding: "40px",
+}}
+>
+<h1
+  style={{
+    fontSize: "42px",
+    marginBottom: "40px",
+    color: "#031b34",
   }}
 >
-  <h1
+  Collect|bar Erstgespräch
+</h1>
+
+{questions.map((q, index) => (
+  <div
+    key={index}
+    className="page-break"
     style={{
-      fontSize: "42px",
       marginBottom: "40px",
-      color: "#031b34",
+      paddingBottom: "20px",
+      borderBottom: "1px solid #dbe4ee",
     }}
   >
-    Collect|bar Erstgespräch
-  </h1>
+    <h2
+      style={{
+        fontSize: "24px",
+        marginBottom: "12px",
+        color: "#031b34",
+      }}
+    >
+      {q.title}
+    </h2>
 
-  {allQuestions}
+    <div
+      style={{
+        border: "1px solid #dbe4ee",
+        borderRadius: "12px",
+        padding: "16px",
+        background: "#f8fafc",
+        minHeight: "80px",
+        whiteSpace: "pre-wrap",
+        color: "#111827",
+      }}
+    >
+      {answers[index] || "-"}
+    </div>
+  </div>
+))}
+ 
 </div>
     </div>
   );
