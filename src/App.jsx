@@ -3,208 +3,191 @@ import html2pdf from "html2pdf.js";
 
 export default function CollectbarTool() {
   const questions = [
-  {
-    title: "Kanzleiname",
-    type: "input",
-    placeholder:
-      "Name der Kanzlei eingeben...",
-  },
+    {
+      title: "Kanzleiname",
+      type: "input",
+      placeholder: "Name der Kanzlei eingeben...",
+    },
 
-  
-  {
-    title:
-      "Kurzvorstellung meiner Person",
-    type: "textarea",
-    placeholder:
-      "Wer ich bin, meine Rolle im Projekt und meine Aufgabe bei der Einführung/Begleitung der Lösung.",
-  },
+    {
+      title: "Kurzvorstellung meiner Person",
+      type: "textarea",
+      placeholder:
+        "Wer ich bin, meine Rolle im Projekt und meine Aufgabe bei der Einführung/Begleitung der Lösung.",
+    },
 
-  {
-    title:
-      "Agenda",
-    type: "textarea",
-    placeholder:
-      " Begrüßung - Kurze Einordnung des Anliegens- Abfrage der Anforderungen und Kanzleibedürfnisse -Einholung von Informationen zu Funktionen und Möglichkeiten -Klärung der benötigten Informationen und Voraussetzungen für die Umsetzung - Nächste Schritte.  .",
-  },
+    {
+      title: "Agenda",
+      type: "textarea",
+      placeholder:
+        " Begrüßung - Kurze Einordnung des Anliegens- Abfrage der Anforderungen und Kanzleibedürfnisse -Einholung von Informationen zu Funktionen und Möglichkeiten -Klärung der benötigten Informationen und Voraussetzungen für die Umsetzung - Nächste Schritte.  .",
+    },
 
+    {
+      title:
+        "Wie arbeiten Sie aktuell mit eingehenden Dokumenten?",
+      type: "textarea",
+      placeholder:
+        "Papier, Scan, E-Mail, Upload, DATEV Upload Mobil etc.",
+    },
 
-  {
-    title:
-      "Wie arbeiten Sie aktuell mit eingehenden Dokumenten?",
-    type: "textarea",
-    placeholder:
-      "Papier, Scan, E-Mail, Upload, DATEV Upload Mobil etc.",
-  },
+    {
+      title: "Welche Systeme werden bereits genutzt?",
+      type: "textarea",
+      placeholder:
+        "DATEV DMS, Unternehmen Online, Meine Steuern, Personalakte etc.",
+    },
 
-  {
-    title:
-      "Welche Systeme werden bereits genutzt?",
-    type: "textarea",
-    placeholder:
-      "DATEV DMS, Unternehmen Online, Meine Steuern, Personalakte etc.",
-  },
+    {
+      title:
+        "Gibt es aktuell Probleme oder Engpässe?",
+      type: "textarea",
+      placeholder:
+        "Medienbrüche, Suchzeiten, fehlende Transparenz, Freigaben, Unterschriftenprozesse.",
+    },
 
-  {
-    title:
-      "Gibt es aktuell Probleme oder Engpässe?",
-    type: "textarea",
-    placeholder:
-      "Medienbrüche, Suchzeiten, fehlende Transparenz, Freigaben, Unterschriftenprozesse.",
-  },
+    {
+      title:
+        "Welche Erwartungen haben Sie an Collect|bar?",
+      type: "textarea",
+      placeholder:
+        "Zeitersparnis, Strukturierung, Automatisierung, weniger manuelle Arbeit.",
+    },
 
-  {
-    title:
-      "Welche Erwartungen haben Sie an Collect|bar?",
-    type: "textarea",
-    placeholder:
-      "Zeitersparnis, Strukturierung, Automatisierung, weniger manuelle Arbeit.",
-  },
+    {
+      title:
+        "Welche Mitarbeitergruppen arbeiten später mit der Lösung?",
+      type: "textarea",
+      placeholder:
+        "Sekretariat, Steuerberater, Sachbearbeiter, Lohn etc.",
+    },
 
-  {
-    title:
-      "Welche Mitarbeitergruppen arbeiten später mit der Lösung?",
-    type: "textarea",
-    placeholder:
-      "Sekretariat, Steuerberater, Sachbearbeiter, Lohn etc.",
-  },
+    {
+      title:
+        "Werden Belege bereits über Unternehmen Online verarbeitet?",
+      type: "textarea",
+      placeholder:
+        "Aktuelle Prozesse und Nutzung beschreiben...",
+    },
 
-  {
-    title:
-      "Werden Belege bereits über Unternehmen Online verarbeitet?",
-    type: "textarea",
-    placeholder:
-      "Aktuelle Prozesse und Nutzung beschreiben...",
-  },
+    {
+      title: "Wird 'Meine Steuern' aktiv genutzt?",
+      type: "textarea",
+      placeholder:
+        "Aktuelle Nutzung und Prozesse beschreiben...",
+    },
 
-  {
-    title:
-      "Wird 'Meine Steuern' aktiv genutzt?",
-    type: "textarea",
-    placeholder:
-      "Aktuelle Nutzung und Prozesse beschreiben...",
-  },
+    {
+      title: "Wird DATEV Personalakte eingesetzt?",
+      type: "textarea",
+      placeholder:
+        "Aktuelle Nutzung und Anforderungen beschreiben...",
+    },
 
-  {
-    title:
-      "Wird DATEV Personalakte eingesetzt?",
-    type: "textarea",
-    placeholder:
-      "Aktuelle Nutzung und Anforderungen beschreiben...",
-  },
+    {
+      title: "Wird DATEV DMS genutzt?",
+      type: "textarea",
+      placeholder:
+        "Bestehende DMS-Prozesse beschreiben...",
+    },
 
-  {
-    title:
-      "Wird DATEV DMS genutzt?",
-    type: "textarea",
-    placeholder:
-      "Bestehende DMS-Prozesse beschreiben...",
-  },
+    {
+      title:
+        "Welche Dokumente werden unterschrieben?",
+      type: "textarea",
+      placeholder:
+        "Lokal oder digital? Welche Abläufe gibt es?",
+    },
 
-  {
-    title:
-      "Welche Dokumente werden unterschrieben?",
-    type: "textarea",
-    placeholder:
-      "Lokal oder digital? Welche Abläufe gibt es?",
-  },
+    {
+      title:
+        "Werden externe Signaturen benötigt?",
+      type: "textarea",
+      placeholder:
+        "Wer versendet die Signaturanfragen?",
+    },
 
-  {
-    title:
-      "Werden externe Signaturen benötigt?",
-    type: "textarea",
-    placeholder:
-      "Wer versendet die Signaturanfragen?",
-  },
+    {
+      title:
+        "Ist ein Jahresabschluss-Workflow gewünscht?",
+      type: "textarea",
+      placeholder:
+        "Erstellung → Prüfung → Freigabe → Signatur → Ablage",
+    },
 
-  {
-    title:
-      "Ist ein Jahresabschluss-Workflow gewünscht?",
-    type: "textarea",
-    placeholder:
-      "Erstellung → Prüfung → Freigabe → Signatur → Ablage",
-  },
+    {
+      title:
+        "Sind mehrere Unterschriften notwendig?",
+      type: "textarea",
+      placeholder:
+        "Einzel- oder Mehrfachsignatur definieren.",
+    },
 
-  {
-    title:
-      "Sind mehrere Unterschriften notwendig?",
-    type: "textarea",
-    placeholder:
-      "Einzel- oder Mehrfachsignatur definieren.",
-  },
+    {
+      title: "Gibt es Freigabestufen?",
+      type: "textarea",
+      placeholder:
+        "Sachbearbeiter → Steuerberater → Mandant",
+    },
 
-  {
-    title:
-      "Gibt es Freigabestufen?",
-    type: "textarea",
-    placeholder:
-      "Sachbearbeiter → Steuerberater → Mandant",
-  },
+    {
+      title:
+        "Wird auftragsbezogen in DATEV DMS abgelegt?",
+      type: "textarea",
+      placeholder:
+        "Bestehende Ablagestruktur beschreiben...",
+    },
 
-  {
-    title:
-      "Wird auftragsbezogen in DATEV DMS abgelegt?",
-    type: "textarea",
-    placeholder:
-      "Bestehende Ablagestruktur beschreiben...",
-  },
+    {
+      title: "Ist EO comfort notwendig?",
+      type: "textarea",
+      placeholder:
+        "Anforderungen an auftragsbezogene Steuerung beschreiben...",
+    },
 
-  {
-    title:
-      "Ist EO comfort notwendig?",
-    type: "textarea",
-    placeholder:
-      "Anforderungen an auftragsbezogene Steuerung beschreiben...",
-  },
+    {
+      title:
+        "Ist EO comfort Connect notwendig?",
+      type: "textarea",
+      placeholder:
+        "Technische Integration prüfen und dokumentieren...",
+    },
 
-  {
-    title:
-      "Ist EO comfort Connect notwendig?",
-    type: "textarea",
-    placeholder:
-      "Technische Integration prüfen und dokumentieren...",
-  },
+    {
+      title: "Benutzerliste bereitstellen",
+      type: "textarea",
+      placeholder:
+        "Benutzername, Passwort, Zusatz, Gruppen und Rollen definieren.",
+    },
 
-  {
-    title:
-      "Benutzerliste bereitstellen",
-    type: "textarea",
-    placeholder:
-      "Benutzername, Passwort, Zusatz, Gruppen und Rollen definieren.",
-  },
+    {
+      title: "Signatur-Postfach anlegen",
+      type: "textarea",
+      placeholder:
+        "Empfehlung: signatur@kanzlei.de",
+    },
 
-  {
-    title:
-      "Signatur-Postfach anlegen",
-    type: "textarea",
-    placeholder:
-      "Empfehlung: signatur@kanzlei.de",
-  },
+    {
+      title: "Demo-Account erstellen",
+      type: "textarea",
+      placeholder:
+        "30 Tage Testphase und danach Paketwahl.",
+    },
 
-  {
-    title:
-      "Demo-Account erstellen",
-    type: "textarea",
-    placeholder:
-      "30 Tage Testphase und danach Paketwahl.",
-  },
+    {
+      title: "Offene Fragen sammeln",
+      type: "textarea",
+      placeholder:
+        "Fehlende Informationen und Zuständigkeiten festhalten.",
+    },
 
-  {
-    title:
-      "Offene Fragen sammeln",
-    type: "textarea",
-    placeholder:
-      "Fehlende Informationen und Zuständigkeiten festhalten.",
-  },
-
-  {
-    title:
-      "Technischen Termin planen",
-    type: "textarea",
-    placeholder:
-      "Aufschaltung, Einrichtung und Schulung abstimmen.",
-  },
-];
- 
+    {
+      title: "Technischen Termin planen",
+      type: "textarea",
+      placeholder:
+        "Aufschaltung, Einrichtung und Schulung abstimmen.",
+    },
+  ];
 
   const [currentStep, setCurrentStep] =
     useState(0);
@@ -212,67 +195,51 @@ export default function CollectbarTool() {
   const [answers, setAnswers] =
     useState({});
 
-  const handleAnswerChange = (
-    value
-  ) => {
+  const handleAnswerChange = (value) => {
     setAnswers({
       ...answers,
       [currentStep]: value,
     });
   };
 
+  const exportPDF = async () => {
+    const fileName =
+      answers[0]?.trim() || "Erstgespräch";
 
-const exportPDF = async () => {
-  const fileName =
-    answers[0] && answers[0].trim() !== ""
-      ? answers[0].trim()
-      : "Erstgespräch";
+    const element =
+      document.getElementById("pdf-export");
 
-  const element = document.getElementById("pdf-export");
+    const options = {
+      margin: 0.5,
 
-  // WICHTIG
-  element.style.display = "block";
+      filename: `${fileName}.pdf`,
 
-  await new Promise((resolve) =>
-    setTimeout(resolve, 300)
-  );
+      image: {
+        type: "jpeg",
+        quality: 1,
+      },
 
-  const options = {
-    margin: 0.5,
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+      },
 
-    filename: `${fileName}.pdf`,
+      jsPDF: {
+        unit: "in",
+        format: "a4",
+        orientation: "portrait",
+      },
 
-    image: {
-      type: "jpeg",
-      quality: 1,
-    },
-    html2canvas: {
-      scale: 2,
-      useCORS: true,
-      scrollY: 0,
-    },
+      pagebreak: {
+        mode: ["avoid-all", "css", "legacy"],
+      },
+    };
 
-    jsPDF: {
-      unit: "in",
-      format: "a4",
-      orientation: "portrait",
-    },
-
-    pagebreak: {
-      mode: ["css", "legacy"],
-      after: ".page-break",
-    },
+    await html2pdf()
+      .set(options)
+      .from(element)
+      .save();
   };
-
-  await html2pdf()
-    .set(options)
-    .from(element)
-    .save();
-
-  element.style.display = "none";
-};
-
-
 
   return (
     <div
@@ -280,8 +247,7 @@ const exportPDF = async () => {
         minHeight: "100vh",
         background: "#edf2f7",
         padding: "40px",
-        fontFamily:
-          "Arial, sans-serif",
+        fontFamily: "Arial, sans-serif",
       }}
     >
       <div
@@ -334,8 +300,7 @@ const exportPDF = async () => {
                 fontSize: "18px",
               }}
             >
-              Interaktiver
-              Gesprächsleitfaden
+              Interaktiver Gesprächsleitfaden
             </p>
           </div>
 
@@ -382,8 +347,7 @@ const exportPDF = async () => {
                   color: "#0f172a",
                 }}
               >
-                Schritt{" "}
-                {currentStep + 1} von{" "}
+                Schritt {currentStep + 1} von{" "}
                 {questions.length}
               </span>
 
@@ -393,9 +357,8 @@ const exportPDF = async () => {
                 }}
               >
                 {
-                  questions[
-                    currentStep
-                  ].title
+                  questions[currentStep]
+                    .title
                 }
               </span>
             </div>
@@ -404,8 +367,7 @@ const exportPDF = async () => {
               style={{
                 width: "100%",
                 height: "10px",
-                background:
-                  "#e2e8f0",
+                background: "#e2e8f0",
                 borderRadius: "999px",
               }}
             >
@@ -417,12 +379,9 @@ const exportPDF = async () => {
                     100
                   }%`,
                   height: "100%",
-                  background:
-                    "#16c79a",
-                  borderRadius:
-                    "999px",
-                  transition:
-                    "0.3s ease",
+                  background: "#16c79a",
+                  borderRadius: "999px",
+                  transition: "0.3s ease",
                 }}
               />
             </div>
@@ -432,8 +391,7 @@ const exportPDF = async () => {
           <div
             style={{
               background: "#ffffff",
-              border:
-                "1px solid #dbe4ee",
+              border: "1px solid #dbe4ee",
               borderRadius: "22px",
               overflow: "hidden",
             }}
@@ -443,8 +401,7 @@ const exportPDF = async () => {
                 padding: "28px 32px",
                 borderBottom:
                   "1px solid #e5e7eb",
-                background:
-                  "#f8fafc",
+                background: "#f8fafc",
               }}
             >
               <h2
@@ -456,9 +413,8 @@ const exportPDF = async () => {
                 }}
               >
                 {
-                  questions[
-                    currentStep
-                  ].title
+                  questions[currentStep]
+                    .title
                 }
               </h2>
             </div>
@@ -473,9 +429,8 @@ const exportPDF = async () => {
                 <input
                   type="text"
                   value={
-                    answers[
-                      currentStep
-                    ] || ""
+                    answers[currentStep] ||
+                    ""
                   }
                   onChange={(e) =>
                     handleAnswerChange(
@@ -483,20 +438,17 @@ const exportPDF = async () => {
                     )
                   }
                   placeholder={
-                    questions[
-                      currentStep
-                    ].placeholder
+                    questions[currentStep]
+                      .placeholder
                   }
                   style={{
                     width: "100%",
                     padding: "20px",
-                    borderRadius:
-                      "16px",
+                    borderRadius: "16px",
                     border:
                       "1px solid #cbd5e1",
                     fontSize: "18px",
-                    background:
-                      "#f8fafc",
+                    background: "#f8fafc",
                     color: "#111827",
                     outline: "none",
                   }}
@@ -504,9 +456,8 @@ const exportPDF = async () => {
               ) : (
                 <textarea
                   value={
-                    answers[
-                      currentStep
-                    ] || ""
+                    answers[currentStep] ||
+                    ""
                   }
                   onChange={(e) =>
                     handleAnswerChange(
@@ -514,22 +465,19 @@ const exportPDF = async () => {
                     )
                   }
                   placeholder={
-                    questions[
-                      currentStep
-                    ].placeholder
+                    questions[currentStep]
+                      .placeholder
                   }
                   style={{
                     width: "100%",
                     minHeight: "260px",
-                    borderRadius:
-                      "16px",
+                    borderRadius: "16px",
                     border:
                       "1px solid #cbd5e1",
                     padding: "20px",
                     fontSize: "16px",
                     resize: "vertical",
-                    background:
-                      "#f8fafc",
+                    background: "#f8fafc",
                     color: "#111827",
                     outline: "none",
                   }}
@@ -553,14 +501,10 @@ const exportPDF = async () => {
                   currentStep - 1
                 )
               }
-              disabled={
-                currentStep === 0
-              }
+              disabled={currentStep === 0}
               style={{
-                padding:
-                  "16px 26px",
-                borderRadius:
-                  "14px",
+                padding: "16px 26px",
+                borderRadius: "14px",
                 border: "none",
                 background:
                   currentStep === 0
@@ -581,17 +525,12 @@ const exportPDF = async () => {
             {currentStep ===
             questions.length - 1 ? (
               <button
-                onClick={
-                  exportPDF
-                }
+                onClick={exportPDF}
                 style={{
-                  padding:
-                    "16px 26px",
-                  borderRadius:
-                    "14px",
+                  padding: "16px 26px",
+                  borderRadius: "14px",
                   border: "none",
-                  background:
-                    "#16c79a",
+                  background: "#16c79a",
                   color: "white",
                   cursor: "pointer",
                   fontSize: "16px",
@@ -608,27 +547,19 @@ const exportPDF = async () => {
                   )
                 }
                 disabled={
-                  !answers[
-                    currentStep
-                  ]?.trim()
+                  !answers[currentStep]?.trim()
                 }
                 style={{
-                  padding:
-                    "16px 26px",
-                  borderRadius:
-                    "14px",
+                  padding: "16px 26px",
+                  borderRadius: "14px",
                   border: "none",
                   background:
-                    !answers[
-                      currentStep
-                    ]?.trim()
+                    !answers[currentStep]?.trim()
                       ? "#94a3b8"
                       : "#16c79a",
                   color: "white",
                   cursor:
-                    !answers[
-                      currentStep
-                    ]?.trim()
+                    !answers[currentStep]?.trim()
                       ? "not-allowed"
                       : "pointer",
                   fontSize: "16px",
@@ -641,64 +572,64 @@ const exportPDF = async () => {
           </div>
         </div>
       </div>
+
+      {/* PDF EXPORT */}
       <div
-  id="pdf-export"
-style={{
-  position: "absolute",
-  top: "-99999px",
-  left: "-99999px",
-  width: "900px",
-  background: "white",
-  padding: "40px",
-}}
->
-<h1
-  style={{
-    fontSize: "42px",
-    marginBottom: "40px",
-    color: "#031b34",
-  }}
->
-  Collect|bar Erstgespräch
-</h1>
+        id="pdf-export"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: "-10000px",
+          width: "900px",
+          background: "white",
+          padding: "40px",
+          zIndex: -1,
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "42px",
+            marginBottom: "40px",
+            color: "#031b34",
+          }}
+        >
+          Collect|bar Erstgespräch
+        </h1>
 
-{questions.map((q, index) => (
-  <div
-    key={index}
-    className="page-break"
-    style={{
-      marginBottom: "40px",
-      paddingBottom: "20px",
-      borderBottom: "1px solid #dbe4ee",
-    }}
-  >
-    <h2
-      style={{
-        fontSize: "24px",
-        marginBottom: "12px",
-        color: "#031b34",
-      }}
-    >
-      {q.title}
-    </h2>
+        {questions.map((q, index) => (
+          <div
+            key={index}
+            style={{
+              marginBottom: "40px",
+              pageBreakInside: "avoid",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "24px",
+                marginBottom: "12px",
+                color: "#031b34",
+              }}
+            >
+              {q.title}
+            </h2>
 
-    <div
-      style={{
-        border: "1px solid #dbe4ee",
-        borderRadius: "12px",
-        padding: "16px",
-        background: "#f8fafc",
-        minHeight: "80px",
-        whiteSpace: "pre-wrap",
-        color: "#111827",
-      }}
-    >
-      {answers[index] || "-"}
-    </div>
-  </div>
-))}
- 
-</div>
+            <div
+              style={{
+                border: "1px solid #dbe4ee",
+                borderRadius: "12px",
+                padding: "16px",
+                background: "#f8fafc",
+                whiteSpace: "pre-wrap",
+                color: "#111827",
+                minHeight: "80px",
+              }}
+            >
+              {answers[index] || "-"}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
