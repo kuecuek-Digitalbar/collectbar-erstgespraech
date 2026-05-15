@@ -221,41 +221,90 @@ export default function CollectbarTool() {
     });
   };
 
-  const exportPDF = () => {
-    const fileName =
-      answers[0] &&
-      answers[0].trim() !== ""
-        ? answers[0].trim()
-        : "Erstgespräch";
+const exportPDF = async () => {
+  const fileName =
+    answers[0] &&
+    answers[0].trim() !== ""
+      ? answers[0].trim()
+      : "Erstgespräch";
 
-    const element =
-      document.getElementById(
-        "pdf-content"
-      );
+  const element =
+    document.getElementById(
+      "pdf-export"
+    );
 
-    const options = {
-      margin: 0.5,
-      filename: `${fileName}.pdf`,
-      image: {
-        type: "jpeg",
-        quality: 1,
-      },
-      html2canvas: {
-        scale: 2,
-      },
-      jsPDF: {
-        unit: "in",
-        format: "a4",
-        orientation: "portrait",
-      },
-    };
+  element.style.display = "block";
 
-    html2pdf()
-      .set(options)
-      .from(element)
-      .save();
+  const options = {
+    margin: 0.5,
+
+    filename: `${fileName}.pdf`,
+
+    image: {
+      type: "jpeg",
+      quality: 1,
+    },
+
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+    },
+
+    jsPDF: {
+      unit: "in",
+      format: "a4",
+      orientation: "portrait",
+    },
+
+    pagebreak: {
+      mode: ["avoid-all", "css", "legacy"],
+    },
   };
 
+  await html2pdf()
+    .set(options)
+    .from(element)
+    .save();
+
+  element.style.display = "none";
+};
+
+
+const allQuestions = questions.map(
+  (q, index) => (
+    <div
+      key={index}
+      style={{
+        marginBottom: "30px",
+        pageBreakInside: "avoid",
+      }}
+    >
+      <h2
+        style={{
+          fontSize: "24px",
+          marginBottom: "10px",
+          color: "#031b34",
+        }}
+      >
+        {q.title}
+      </h2>
+
+      <div
+        style={{
+          border: "1px solid #dbe4ee",
+          borderRadius: "12px",
+          padding: "16px",
+          background: "#f8fafc",
+          minHeight: "80px",
+          whiteSpace: "pre-wrap",
+          color: "#111827",
+        }}
+      >
+        {answers[index] || "-"}
+      </div>
+    </div>
+  )
+);
   return (
     <div
       style={{
@@ -623,6 +672,29 @@ export default function CollectbarTool() {
           </div>
         </div>
       </div>
+      <div
+  id="pdf-export"
+  style={{
+    visibility: "hidden",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "900px",
+    background: "white",
+  }}
+>
+  <h1
+    style={{
+      fontSize: "42px",
+      marginBottom: "40px",
+      color: "#031b34",
+    }}
+  >
+    Collect|bar Erstgespräch
+  </h1>
+
+  {allQuestions}
+</div>
     </div>
   );
 }
