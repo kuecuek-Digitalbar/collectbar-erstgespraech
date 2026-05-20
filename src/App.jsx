@@ -15,7 +15,7 @@ export default function CollectbarTool() {
     { title: "Wird 'Meine Steuern' aktiv genutzt?", type: "textarea", placeholder: "Aktuelle Nutzung und Prozesse beschreiben..." },
     { title: "Wird DATEV Personalakte eingesetzt?", type: "textarea", placeholder: "Aktuelle Nutzung und Anforderungen beschreiben..." },
     { title: "Wird DATEV DMS genutzt?", type: "textarea", placeholder: "Bestehende DMS-Prozesse beschreiben..." },
-    { title: "Wird DATEVconnect & DATEVconnect Dokumentenmanagement vorhanden?", type: "textarea", placeholder: "Muss bestellt werden..." },
+    { title: "Ist DATEVconnect & DATEVconnect Dokumentenmanagement vorhanden?", type: "textarea", placeholder: "Muss bestellt werden..." },
     { title: "Welche Dokumente werden unterschrieben?", type: "textarea", placeholder: "Lokal oder digital? Welche Abläufe gibt es?" },
     { title: "Werden externe Signaturen benötigt?", type: "textarea", placeholder: "Wer versendet die Signaturanfragen?" },
     { title: "Ist ein Jahresabschluss-Workflow gewünscht?", type: "textarea", placeholder: "Erstellung → Prüfung → Freigabe → Signatur → Ablage" },
