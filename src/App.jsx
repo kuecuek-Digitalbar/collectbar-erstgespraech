@@ -1,4 +1,5 @@
 import { useState } from "react";
+const APP_PASSWORD = "collectbar2026";
 
 export default function CollectbarTool() {
   const questions = [
@@ -30,6 +31,11 @@ export default function CollectbarTool() {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState({});
+  const [isAuthenticated, setIsAuthenticated] =
+  useState(false);
+
+const [password, setPassword] =
+  useState("");
   const [isExporting, setIsExporting] = useState(false);
 
   const handleAnswerChange = (value) => {
@@ -149,7 +155,104 @@ export default function CollectbarTool() {
       setIsExporting(false);
     }
   };
+if (!isAuthenticated) {
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "#edf2f7",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <div
+        style={{
+          width: "420px",
+          background: "white",
+          padding: "40px",
+          borderRadius: "24px",
+          boxShadow:
+            "0 10px 40px rgba(0,0,0,0.08)",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "34px",
+            marginBottom: "10px",
+            color: "#031b34",
+          }}
+        >
+          Collect
+          <span
+            style={{
+              color: "#16c79a",
+            }}
+          >
+            |
+          </span>
+          bar
+        </h1>
 
+        <p
+          style={{
+            marginBottom: "25px",
+            color: "#64748b",
+          }}
+        >
+          Passwortgeschützter Zugang
+        </p>
+
+        <input
+          type="password"
+          placeholder="Passwort eingeben"
+          value={password}
+          onChange={(e) =>
+            setPassword(e.target.value)
+          }
+          style={{
+            width: "100%",
+            padding: "18px",
+            borderRadius: "14px",
+            border: "1px solid #cbd5e1",
+            marginBottom: "20px",
+            fontSize: "16px",
+          }}
+        />
+
+        <button
+          onClick={() => {
+            if (
+              password === APP_PASSWORD
+            ) {
+              setIsAuthenticated(
+                true
+              );
+            } else {
+              alert(
+                "Falsches Passwort"
+              );
+            }
+          }}
+          style={{
+            width: "100%",
+            padding: "18px",
+            border: "none",
+            borderRadius: "14px",
+            background: "#16c79a",
+            color: "white",
+            fontSize: "16px",
+            fontWeight: "700",
+            cursor: "pointer",
+          }}
+        >
+          Anmelden
+        </button>
+      </div>
+    </div>
+  );
+}
   return (
     <div style={{ minHeight: "100vh", background: "#edf2f7", padding: "40px", fontFamily: "Arial, sans-serif" }}>
       <div style={{ maxWidth: "950px", margin: "0 auto", background: "#ffffff", borderRadius: "24px", overflow: "hidden", boxShadow: "0 10px 40px rgba(0,0,0,0.08)" }}>
