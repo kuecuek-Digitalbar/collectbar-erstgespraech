@@ -1,5 +1,5 @@
 {
-  "name": "erstgespr-ch-tool",
+  "name": "Collectbar Erstgespräch",
   "main": "electron.cjs",
   "private": true,
   "version": "0.0.0",
